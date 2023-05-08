@@ -98,22 +98,30 @@ export const closeDirection = {
   none: keyframes``,
 };
 
-export const opacityAnimation = {
+export const visibilityAnimation = {
   show: keyframes`
     from {
       opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
     to {
       opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
-  `,
+    `,
 
   hide: keyframes`
     from {
       opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
     to {
       opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
   `,
 };

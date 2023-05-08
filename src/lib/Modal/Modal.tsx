@@ -1,8 +1,12 @@
 import { ReactNode } from "react";
-import styled, { CSSProp } from "styled-components";
+import styled, { CSSProp, css } from "styled-components";
 import useModal from "./useModal";
 import Button from "./Button";
-import { openDirection, opacityAnimation, closeDirection } from "./modal.style";
+import {
+  openDirection,
+  closeDirection,
+  visibilityAnimation,
+} from "./modal.style";
 
 interface Props {
   modalStyle: CSSProp;
@@ -58,7 +62,7 @@ const S = {
     cursor: pointer;
 
     animation: ${({ isModalOpen }) =>
-        isModalOpen ? opacityAnimation["show"] : opacityAnimation["hide"]}
+        isModalOpen ? visibilityAnimation["show"] : visibilityAnimation["hide"]}
       0.8s;
   `,
 
@@ -67,13 +71,20 @@ const S = {
     isModalOpen: boolean;
     direction: "top" | "right" | "left" | "bottom" | "none";
   }>`
-    animation: ${({ isModalOpen, direction }) =>
-        isModalOpen
-          ? (openDirection[direction], opacityAnimation["show"])
-          : (closeDirection[direction], opacityAnimation["hide"])}
-      0.6s;
+    ${(props) => props.modalStyle};
 
-    ${(props) => props.modalStyle}
+    animation: ${({ isModalOpen, direction }) =>
+      isModalOpen
+        ? css`
+            ${openDirection[direction]} 0.6s, ${visibilityAnimation[
+              "show"
+            ]} 0.6s
+          `
+        : css`
+            ${closeDirection[direction]} 0.6s, ${visibilityAnimation[
+              "hide"
+            ]} 0.6s
+          `};
   `,
 };
 
