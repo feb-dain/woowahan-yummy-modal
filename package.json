@@ -1,6 +1,6 @@
 {
   "name": "woowahan-yummy-modal",
-  "version": "0.0.3",
+  "version": "0.1.2",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,6 +11,11 @@
     "type": "git",
     "url": "git://github.com/feb-dain/woowahan-yummy-modal.git"
   },
+  "keywords": [
+    "react",
+    "component",
+    "modal"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
