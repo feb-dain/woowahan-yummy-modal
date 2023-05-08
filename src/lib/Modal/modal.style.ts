@@ -103,12 +103,10 @@ export const visibilityAnimation = {
     from {
       opacity: 0;
       visibility: hidden;
-      pointer-events: none;
     }
     to {
       opacity: 1;
       visibility: visible;
-      pointer-events: auto;
     }
     `,
 
@@ -116,12 +114,10 @@ export const visibilityAnimation = {
     from {
       opacity: 1;
       visibility: visible;
-      pointer-events: auto;
     }
     to {
       opacity: 0;
       visibility: hidden;
-      pointer-events: none;
     }
   `,
 };

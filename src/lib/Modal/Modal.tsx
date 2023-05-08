@@ -63,7 +63,7 @@ const S = {
 
     animation: ${({ isModalOpen }) =>
         isModalOpen ? visibilityAnimation["show"] : visibilityAnimation["hide"]}
-      0.8s;
+      0.8s forwards;
   `,
 
   Modal: styled.div<{
@@ -78,12 +78,12 @@ const S = {
         ? css`
             ${openDirection[direction]} 0.6s, ${visibilityAnimation[
               "show"
-            ]} 0.6s
+            ]} 0.6s forwards
           `
         : css`
             ${closeDirection[direction]} 0.6s, ${visibilityAnimation[
               "hide"
-            ]} 0.6s
+            ]} 0.6s forwards
           `};
   `,
 };
