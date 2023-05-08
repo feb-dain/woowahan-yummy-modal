@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { KeyboardEvent, ReactNode, useEffect, useRef } from "react";
 import styled, { CSSProp, css } from "styled-components";
 import useModal from "./useModal";
 import Button from "./Button";
@@ -8,12 +8,14 @@ import {
   visibilityAnimation,
 } from "./modal.style";
 
+type Direction = "top" | "right" | "left" | "bottom" | "none";
+
 interface Props {
   modalStyle: CSSProp;
   children: ReactNode;
   closeButtonName: string;
   buttonStyle: CSSProp;
-  direction: "top" | "right" | "left" | "bottom" | "none";
+  direction: Direction;
 }
 
 const Modal = ({
@@ -24,6 +26,11 @@ const Modal = ({
   direction,
 }: Props) => {
   const { isModalOpen, handleModalClose } = useModal();
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleKeyDownEsc = ({ key }: KeyboardEvent<HTMLDivElement>) => {
+    if (key === "Escape") handleModalClose();
+  };
 
   return (
     <>
@@ -34,10 +41,13 @@ const Modal = ({
       />
       <S.Modal
         role="dialog"
-        className="modal"
+        tabIndex={0}
+        className={`modal-open-${isModalOpen}`}
         modalStyle={modalStyle}
         isModalOpen={isModalOpen}
         direction={direction ? direction : "none"}
+        ref={modalRef}
+        onKeyDown={handleKeyDownEsc}
       >
         {children}
         <Button
@@ -69,7 +79,7 @@ const S = {
   Modal: styled.div<{
     modalStyle: CSSProp;
     isModalOpen: boolean;
-    direction: "top" | "right" | "left" | "bottom" | "none";
+    direction: Direction;
   }>`
     ${(props) => props.modalStyle};
 
