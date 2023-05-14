@@ -1,4 +1,4 @@
-import { KeyboardEvent, ReactNode, useEffect, useRef } from "react";
+import { KeyboardEvent, ReactNode, useRef } from "react";
 import styled, { CSSProp, css } from "styled-components";
 import useModal from "./useModal";
 import Button from "./Button";
@@ -8,7 +8,7 @@ import {
   visibilityAnimation,
 } from "./modal.style";
 
-type Direction = "top" | "right" | "left" | "bottom" | "none";
+type Direction = "top" | "right" | "left" | "center" | "bottom" | "none";
 
 interface Props {
   modalStyle: CSSProp;
