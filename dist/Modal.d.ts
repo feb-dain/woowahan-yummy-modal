@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { CSSProp } from "styled-components";
-type Direction = "top" | "right" | "left" | "bottom" | "none";
+type Direction = "top" | "right" | "left" | "center" | "bottom" | "none";
 interface Props {
     modalStyle: CSSProp;
     children: ReactNode;
